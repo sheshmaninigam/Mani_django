@@ -11,5 +11,5 @@ def index(request):
         "itemlist":itemlist
     }
     return render(request, 'food/index.html', context)
-def detail(request):
-    return HttpResponse("<h1 style='color:green'>this is an details view</h1>")
+def detail(request,item_id):
+    return HttpResponse(f"item_id:{item_id}")
