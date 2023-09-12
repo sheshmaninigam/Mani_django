@@ -16,10 +16,26 @@
 </head>
 
 <body>
-    <h1>This is the start tag of base.html page</h1>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="{% url 'food:index' %}" class="navbar-brand">
+            Exortillo
+        </a>
+        <div class="navbar">
+            <a href="#" class="nav-item nav-link btn btn-dark">
+                Add item
+            </a>
+            <a href="#" class="nav-item nav-link btn btn-dark">
+                Profile
+            </a>
+            <a href="#" class="nav-item nav-link btn btn-dark">
+                Sign Up
+            </a>
+        </div>
+    </nav>
+
     {% block body %}
     {% endblock %}
-    <h1>This is the end tag of base.html page</h1>
+  
 </body>
 
 </html>
