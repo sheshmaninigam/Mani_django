@@ -9,10 +9,9 @@
 </head>
 <body>
     {% block body %}
-    <h1>This is an index page</h1>
 
     {% for item in itemlist %}
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-3 offset-md-2">
             <img src="{{ item.item_image }}"
             class="card"
@@ -29,6 +28,7 @@
 
         </div>
     </div>
+
     {% endfor %}
     
     {% endblock %}
