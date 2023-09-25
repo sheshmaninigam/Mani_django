@@ -12,6 +12,7 @@ def index(request):
         "itemlist":itemlist
     }
     return render(request, 'food/index.html', context)
+
 def detail(request,item_id):
     item =Item.objects.get(pk=item_id)
     context = {

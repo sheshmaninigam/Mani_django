@@ -21,5 +21,6 @@ from users import views as users_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("food/", include("food.urls")),
-    path('register/', users_views.register, name="register"),
+    path("register/", users_views.register, name="register"),
+    path("login/",users_views.login_view, name = "login")
 ]
