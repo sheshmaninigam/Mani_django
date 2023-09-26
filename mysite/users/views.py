@@ -35,10 +35,18 @@ def login_view(request):
         
         if user is not None:
             login(request, user)
+            messages.success(
+                request,
+                f"Welcome {request.user.username}, you have  been Successfully Logged In"
+            )
             return redirect("food:index")
 
     return render(request, 'users/login.html')
 
 def logout_view(request):
+    messages.success(
+        request,
+        f"{request.user.username}, you have  been Successfully Logged Out"
+    )
     logout(request)
     return redirect("food:index")
