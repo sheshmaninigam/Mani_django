@@ -70,6 +70,6 @@ def logout_view(request):
 
 @login_required
 def profilepage(request):
-    return render(request,'user/profile.html')
+    return render(request,'users/profile.html')
 
    
