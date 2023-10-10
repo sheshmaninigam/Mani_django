@@ -2,10 +2,49 @@
 
 {% block body %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Sign Up</button>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title">
+                        Login
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="Post">
+                        {% csrf_token %}
+                        
+                        <label class="offset-md-1">Username: </label><br>
+                        <p class="offset-md-1">{{ form.username }}</p>
+                        
+                        <br><label class="offset-md-1">Email: </label><br>
+                        <p class="offset-md-1">{{ form.email }}</p>
+
+                        <br><label class="offset-md-1">First name: </label><br>
+                        <p class="offset-md-1">{{ form.first_name }}</p>
+
+                        <br><label class="offset-md-1">Last name: </label><br>
+                        <p class="offset-md-1">{{ form.last_name }}</p>
+
+                        <br><label class="offset-md-1"> Password: </label><br>
+                        <p class="offset-md-1">{{ form.password1 }}</p>
+
+                        <br><label class="offset-md-1">Confirm: </label><br>
+                        <span class="offset-md-1">{{ form.password2 }}</span>
+
+
+                        <button class="btn btn-success btn-sm" type="submit">Sign Up</button>
+                      
+
+                    </form>
+                </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}
