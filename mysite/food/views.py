@@ -1,9 +1,12 @@
+from django.forms.models import BaseModelForm
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from food.models import Item
 from food.forms import ItemForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -59,7 +62,18 @@ def create_item(request):
      return render(request,"food/item-form.html",context)
 
 
+ # class based create_item view
 
+class CreateItem(CreateView):
+    model = Item
+    fields = ["prod_code", "for_user","item_name","item_desc","item_price","item_image"]
+    template_name = "food/item-form.html"
+    success_url = reverse_lazy("food:index")
+
+    def form_valid(self, form) :
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
 # function based update_item view
 
 
