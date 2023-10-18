@@ -9,6 +9,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from food.models import History
 
+
 # Create your views here.
 
 
@@ -47,8 +48,13 @@ class IndexClassView(ListView):
 
 def detail(request,item_id):
     item =Item.objects.get(pk=item_id)
+
+    hist = History.objects.filter(
+        prod_ref = item.prod_code
+    )
     context = {
-         "item":item
+         "item":item,
+         "hist":hist
     }
     return render(request, "food/detail.html", context)
 
