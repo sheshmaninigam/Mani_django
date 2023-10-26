@@ -54,12 +54,22 @@ def detail(request,item_id):
         prod_ref = item.prod_code
     )
 
-    Obj_CusOrd= CusOrders.objects.all()
+    # restaurtant and admin
+    if request.user.profile.user_type == "Rest" or request.user.profile.user_type == "Admin":
+        Obj_CusOrd = CusOrders.objects.filter(
+             prod_code = item.prod_code
+        )
+    
+    elif request.user.profile.user_type == "Cust":
+        Obj_CusOrd= CusOrders.objects.filter(
+            prod_code = item.prod_code,
+            user = request.user.username
+        )
 
     context = {
          "item":item,
          "hist":hist,
-         "oco":Obj_CusOrd
+         "oco":Obj_CusOrd,
     }
     return render(request, "food/detail.html", context)
 
@@ -120,8 +130,6 @@ def update_item(request,id):
     
     if form.is_valid():
         form.save()
-        
-    
 
     
         Obj_History = History(
